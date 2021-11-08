@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+<ui:composition template="/templates/page-template.xhtml">
+
+<ui:define name="pageContent">
+
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+ 
+		<p:dataTable value="#{userListBB.list}" var="u">
+
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="Imię" />
+				</f:facet>
+				<h:outputText value="#{u.imie}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nazwisko" />
+				</f:facet>
+				<h:outputText value="#{u.nazwisko}" />
+			</p:column>
+			
+				<p:column>
+				<f:facet name="header">
+					<h:outputText value="Numer telefonu" />
+				</f:facet>
+				<h:outputText value="#{u.numerTelefonu}" />
+			</p:column>
+			
+			    <f:facet name="header">
+                    <span  style="font-weight: bold; font-size: 20px">Użytkownicy</span>                   
+            </f:facet>
+			
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Opcje" />
+				</f:facet>
+
+				<p:commandButton value="Edytuj" icon="pi pi-pencil"
+					action="#{userListBB.editUzytkownik(u)}" />
+
+				<p:commandButton value="Usuń"  icon="pi pi-trash"
+					action="#{userListBB.deleteUzytkownik(u)}" update="@form" />
+	<p:button outcome="userEditGET" value="Edytuj (GET)">
+					<f:param name="u" value="#{u.idUzytkownik}" />
+				</p:button>
+			</p:column>
+
+		</p:dataTable>
+		
+	</h:form>
+
+	<p:fieldset legend="Opcje" toggleable="true" toggleSpeed="500">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="Nazwisko:" />
+				<p:inputText value="#{userListBB.nazwisko}" />
+				<p:commandButton value="Szukaj" update="form-table" />
+				<p:commandButton value="Dodaj nową osobę"
+			action="#{userListBB.newUzytkownik()}" />	
+			</h:panelGrid>
+			 
+		</h:form>
+	</p:fieldset>
+	
+</ui:define>
+</ui:composition>
+
+</html>
