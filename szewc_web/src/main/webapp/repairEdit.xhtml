@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+    <f:viewAction action="#{repairEditBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>Aktualizacja statusu naprawy</title>
+</h:head>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:fieldset legend="Aktualizacja" toggleable="true" toggleSpeed="500">
+
+		<h:form rendered="#{repairEditBB.naprawa != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="n-status" value="Status:" />
+				<p:inputTextarea id="n-status" value="#{repairEditBB.naprawa.status}"
+				required="true" requiredMessage="Zmień status">				
+				</p:inputTextarea>
+				<p:message for="n-status" display="icon"/>
+
+				<h:outputLabel for="n-cena" value="Cena:" />
+				<p:inputText id="n-cena" value="#{repairEditBB.naprawa.cena}"
+				required="true" requiredMessage="Podaj cenę">	
+				</p:inputText>
+				<p:message for="n-cena" display="icon"/>
+				
+				<h:outputLabel for="n-data" value="Data:" />
+				<p:datePicker  id="n-data" required="true" requiredMessage="Podaj datę odbioru">	 
+				</p:datePicker>
+
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{repairEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="Powrót" outcome="repairList" />
+		</h:form>
+
+	</p:fieldset>
+
+</h:body>
+
+</html>
