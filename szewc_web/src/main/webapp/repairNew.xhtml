@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+    <f:viewAction action="#{repairNewBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>Nowa naprawa</title>
+</h:head>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:fieldset legend="Dodanie nowej naprawy" toggleable="true" toggleSpeed="500">
+
+		<h:form rendered="#{repairNewBB.naprawa != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="n-status" value="Uwagi do naprawy" />
+				<p:inputText id="n-status" value="#{repairNewBB.naprawa.status}">
+				</p:inputText>
+				<p:message for="n-status" display="icon"/>
+
+				<p:outputLabel for="n-rodzajNaprawy" value="Rodzaj naprawy: "/>
+                <p:selectOneMenu id="n-rodzajNaprawy" value="#{repairNewBB.naprawa.rodzajNaprawy}" style="width:150px">
+                    <f:selectItem itemLabel="Wybierz rodzja naprawy" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{repairNewBB.naprawa.rodzajNaprawy}"/>
+                </p:selectOneMenu>
+                <p:message for="n-rodzajNaprawy" display="icon"/>
+				
+				<p:outputLabel for="n-rodzajPlatnosci" value="Rodzaj płatności: "/>
+                <p:selectOneMenu id="n-rodzajPlatnosci" value="#{n.rodzajPlatnosci.rodzajPlatnosci}" style="width:150px">
+                    <f:selectItem itemLabel="Wybierz płatność" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{n.rodzajPlatnosci.rodzajPlatnosci}"/>
+                </p:selectOneMenu>
+				 <p:message for="n-rodzajPlatnosci" display="icon"/>
+				
+			<h:outputLabel for="n-data" value="Data:" />
+				<p:datePicker  id="n-data" required="true" requiredMessage="Podaj datę odbioru">	 
+				</p:datePicker>
+				<p:message for="n-data" display="icon"/>
+
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{repairNewBB.saveRepair()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="Powrót" outcome="main" />
+		</h:form>
+
+	</p:fieldset>
+
+</h:body>
+
+</html>

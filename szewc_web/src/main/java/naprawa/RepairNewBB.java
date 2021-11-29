@@ -1,4 +1,4 @@
-package uzytkownik;
+package naprawa;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -12,42 +12,40 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-import sze_DAO.UserDAO;
-import szewc_entities.Rola;
-import szewc_entities.Uzytkownik;
+import sze_DAO.RepairDAO;
+import szewc_entities.Naprawa;
 
 
 @Named
 @ViewScoped
-public class UserNewBB implements Serializable {
+public class RepairNewBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_USER_LIST = "userList?faces-redirect=true";
+	private static final String PAGE_MAIN_BACK = "main?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private Uzytkownik uzytkownik = new Uzytkownik();
-	private Uzytkownik loaded = null;
-	private Rola rola = new Rola();
+	private Naprawa naprawa = new Naprawa();
+	private Naprawa loaded = null;
+
 	@EJB
-	UserDAO userDAO;
+	RepairDAO repairDAO;
 
 	@Inject
 	FacesContext context;
 
 	@Inject
 	Flash flash;
-	
 
-	public Uzytkownik getUzytkownik() {
-		return uzytkownik;
+	public Naprawa getNaprawa() {
+		return naprawa;
 	}
 
 	public void onLoad() throws IOException {
 
-		loaded = (Uzytkownik) flash.get("uzytkownik");
+		loaded = (Naprawa) flash.get("naprawa");
 
 		if (loaded != null) {
-			uzytkownik = loaded;
+			naprawa = loaded;
 
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³êdne u¿ycie systemu", null));
@@ -55,18 +53,18 @@ public class UserNewBB implements Serializable {
 
 	}
 
-	public String saveUser() {
+	public String saveRepair() {
 		if (loaded == null) {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 		
 		try {
-			if (uzytkownik.getIdUzytkownik() == 0) {
+			if (naprawa.getIdNaprawa() == 0) {
 				
-				userDAO.create(uzytkownik);
+				repairDAO.create(naprawa);
 			} else {
 				
-				userDAO.merge(uzytkownik);
+				repairDAO.merge(naprawa);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,17 +73,6 @@ public class UserNewBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_USER_LIST;
+		return PAGE_MAIN_BACK;
 	}
-
-	public Rola getRola() {
-		return rola;
-	}
-
-	public void setRola(Rola rola) {
-		this.rola = rola;
-	}
-
-
-
 	}

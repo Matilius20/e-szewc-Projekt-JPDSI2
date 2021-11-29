@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+<ui:composition template="/templates/page-template.xhtml">
+
+<ui:define name="pageContent">
+
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+ 
+		<p:dataTable value="#{repairListBB.list}" var="n">
+
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="Status" />
+				</f:facet>
+				<h:outputText value="#{n.status}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Data odbioru" />
+				</f:facet>
+				<h:outputText value="#{n.data}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Cena" />
+				</f:facet>
+				<h:outputText value="#{n.cena}" />
+			</p:column>
+				
+			
+			    <f:facet name="header">
+                    <span  style="font-weight: bold; font-size: 20px">Status naprawy</span>                   
+            </f:facet>
+
+		</p:dataTable>
+		
+		
+	</h:form>
+	
+
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:button value="Powrót do strony głównej" outcome="main.xhtml" style= "margin:0"/>
+			</h:panelGrid>
+			 
+		</h:form>
+
+
+	
+</ui:define>
+</ui:composition>
+
+</html>

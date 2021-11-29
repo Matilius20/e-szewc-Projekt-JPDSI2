@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-    <f:viewAction action="#{userNewBB.onLoad()}" />
+    <f:viewAction action="#{userNewBB.onLoad()}"  />
 </f:metadata>
 
 <h:head>
@@ -60,6 +60,12 @@
 				</p:inputText>
 				<p:message for="u-numerTelefonu" display="icon"/>
 				
+				<p:outputLabel for="r-rola" value="Rola: "/>
+                <p:selectOneMenu id="r-rola" value="#{userNewBB.rola.idRola}" required="true">
+										 <f:selectItem itemLabel="-Wybierz-" itemValue="" noSelectionOption="true" />
+										 <f:selectItem itemLabel="Szewc" itemValue="1"/>
+                                         <f:selectItem itemLabel="Klient" itemValue="2"/>							
+									</p:selectOneMenu>
 
 			</h:panelGrid>
 
