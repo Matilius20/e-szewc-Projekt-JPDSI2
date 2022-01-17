@@ -2,8 +2,10 @@ package naprawa;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
 import javax.ejb.EJB;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
@@ -35,6 +37,10 @@ public class RepairEditBB implements Serializable {
 
 	@Inject
 	Flash flash;
+	
+	@Inject
+	@ManagedProperty("#{Err}")
+	private ResourceBundle Err;
 
 	public Naprawa getNaprawa() {
 		return naprawa;

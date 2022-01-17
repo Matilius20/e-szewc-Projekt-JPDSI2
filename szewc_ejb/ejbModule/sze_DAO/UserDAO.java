@@ -1,13 +1,14 @@
 package sze_DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 
 
 import szewc_entities.Uzytkownik;
@@ -81,6 +82,30 @@ public class UserDAO {
 		}
 
 		return list;
+	}
+
+	public Uzytkownik login(String login, String haslo) {
+		Uzytkownik u = new Uzytkownik();
+		try {
+			u = (Uzytkownik) em.createQuery("from Uzytkownik where login = :login and haslo= :haslo")
+					.setParameter("login", haslo).setParameter("haslo", haslo).getSingleResult();
+		} catch (NoResultException e) {
+			u = null;
+		}
+		return u;
+	}
+
+public List<String> getUserRolesFromDatabase(Uzytkownik user) {
+		
+		ArrayList<String> roles = new ArrayList<String>();
+		
+		if (user.getRola().equals("Szewc")) {
+			roles.add("Szewc");
+		}
+		if (user.getRola().equals("Klient")) {
+			roles.add("Klient");
+		}		
+		return roles;
 	}
 	
 

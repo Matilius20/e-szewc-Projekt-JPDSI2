@@ -35,9 +35,9 @@
                 <p:message for="n-rodzajNaprawy" display="icon"/>
 				
 				<p:outputLabel for="n-rodzajPlatnosci" value="Rodzaj płatności: "/>
-                <p:selectOneMenu id="n-rodzajPlatnosci" value="#{n.rodzajPlatnosci.rodzajPlatnosci}" style="width:150px">
+                <p:selectOneMenu id="n-rodzajPlatnosci" value="#{n.naprawa.id_rodzaj_platnosci}" style="width:150px">
                     <f:selectItem itemLabel="Wybierz płatność" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{n.rodzajPlatnosci.rodzajPlatnosci}"/>
+                    <f:selectItems value="#{n.naprawa.id_rodzaj_platnosci}"/>
                 </p:selectOneMenu>
 				 <p:message for="n-rodzajPlatnosci" display="icon"/>
 				

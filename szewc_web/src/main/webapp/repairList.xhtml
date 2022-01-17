@@ -18,21 +18,21 @@
 
 			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="Uwagi" />
+					<h:outputText value="#{txtRepairs.comments}"  />
 				</f:facet>
 				<h:outputText value="#{n.status}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Data" />
+					<h:outputText value="#{txtRepairs.date}"  />
 				</f:facet>
 				<h:outputText value="#{n.data}" />
 			</p:column>
 			
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Rodzaj naprawy" />
+					<h:outputText value="#{txtRepairs.type}" />
 				</f:facet>
 				<h:outputText value="#{n.rodzajNaprawy.rodzajNaprawy}" />
 			</p:column>
@@ -40,32 +40,32 @@
 			
 				<p:column>
 				<f:facet name="header">
-					<h:outputText value="Rodzaj płatności" />
+					<h:outputText value="#{txtRepairs.payment}" />
 				</f:facet>
 				<h:outputText value="#{n.rodzajPlatnosci.rodzajPlatnosci}" />
 			</p:column>
 			
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Użytkownik" />
+					<h:outputText value="#{txtRepairs.user}" />
 				</f:facet>
 				<h:outputText value="#{n.uzytkownik.nazwisko}" />
 			</p:column>
 			
 			    <f:facet name="header">
-                    <span  style="font-weight: bold; font-size: 20px">Naprawy</span>                   
+                    <span  style="font-weight: bold; font-size: 20px">#{txtRepairs.repairs}</span>                   
             </f:facet>
 			
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Opcje" />
+					<h:outputText value="#{txtRepairs.option}"/>
 				</f:facet>
 
-				<p:commandButton value="Edytuj" icon="pi pi-pencil"
+				<p:commandButton value="#{txtRepairs.edit}" icon="pi pi-pencil"
 					action="#{repairListBB.editRepair(n)}" />
 
-				<p:commandButton value="Usuń"  icon="pi pi-trash"
+				<p:commandButton value="#{txtRepairs.delete}"  icon="pi pi-trash"
 					action="#{repairListBB.deleteRepair(n)}" update="@form" />
 					<f:param name="n" value="#{n.idNaprawa}" />
 			</p:column>
@@ -74,7 +74,12 @@
 		
 	</h:form>
 
-	
+	<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:button value="#{txtRepairs.back}" outcome="main.xhtml" style= "margin:0"/>
+			</h:panelGrid>
+			 
+		</h:form>
 </ui:define>
 </ui:composition>
 

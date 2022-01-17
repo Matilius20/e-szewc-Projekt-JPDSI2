@@ -5,10 +5,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
+<f:view locale="#{facesContext.externalContext.requestLocale}">
 <f:metadata>
     <f:viewAction action="#{userNewBB.onLoad()}"  />
-</f:metadata>
+</f:metadata>	
 
 <h:head>
 	<meta charset="utf-8"/>
@@ -17,20 +17,20 @@
 
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-	<p:fieldset legend="Dodanie nowego użytkownika" toggleable="true" toggleSpeed="500">
+	<p:fieldset legend="#{txtUsers.newuser}" toggleable="true" toggleSpeed="500">
 
 		<h:form rendered="#{userNewBB.uzytkownik != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="u-imie" value="Imię:" />
+				<h:outputLabel for="u-imie" value="#{txtUsers.name}:" />
 				<p:inputText id="u-imie" value="#{userNewBB.uzytkownik.imie}"
-					required="true" requiredMessage="Podaj imię"
+					required="true" requiredMessage="#{Err.givename}"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
 				<p:message for="u-imie" display="icon"/>
 
-				<h:outputLabel for="u-nazwisko" value="Nazwisko:" />
+				<h:outputLabel for="u-nazwisko" value="#{txtUsers.surname}:"/>
 				<p:inputText id="u-nazwisko" value="#{userNewBB.uzytkownik.nazwisko}"
 					required="true" requiredMessage="podaj nazwisko"
 					validatorMessage="co najwyżej 40 znaków">
@@ -38,7 +38,7 @@
 				</p:inputText>
 				<p:message for="u-nazwisko" display="icon"/>
 				
-				<h:outputLabel for="u-login" value="Lognin:" />
+				<h:outputLabel for="u-login" value="#{txtUsers.login}:" />
 				<p:inputText id="u-login" value="#{userNewBB.uzytkownik.login}"
 					required="true" requiredMessage="Podaj login"
 					validatorMessage="co najwyżej 40 znaków">
@@ -46,13 +46,13 @@
 				</p:inputText>
 				<p:message for="u-login" display="icon"/>
 				
-					<h:outputLabel for="u-haslo" value="Hasło:" />
+					<h:outputLabel for="u-haslo" value="#{txtUsers.pass}:" />
 				<p:password  id="u-haslo" value="#{userNewBB.uzytkownik.haslo}"
 					required="true" requiredMessage="Podaj hasło">
 				</p:password>
 				<p:message for="u-haslo" display="icon"/>
 				
-				<h:outputLabel for="u-numerTelefonu" value="Numer telefonu:" />
+				<h:outputLabel for="u-numerTelefonu" value="#{txtUsers.phone}:" />
 				<p:inputText  id="u-numerTelefonu" value="#{userNewBB.uzytkownik.numerTelefonu}"
 					required="true" requiredMessage="Podaj numer telefonu"
 					validatorMessage="Podaj poprawny numer telefonu">
@@ -60,25 +60,25 @@
 				</p:inputText>
 				<p:message for="u-numerTelefonu" display="icon"/>
 				
-				<p:outputLabel for="r-rola" value="Rola: "/>
-                <p:selectOneMenu id="r-rola" value="#{userNewBB.rola.idRola}" required="true">
-										 <f:selectItem itemLabel="-Wybierz-" itemValue="" noSelectionOption="true" />
-										 <f:selectItem itemLabel="Szewc" itemValue="1"/>
-                                         <f:selectItem itemLabel="Klient" itemValue="2"/>							
+				<p:outputLabel for="rola" value="#{txtUsers.role}:"/>
+                <p:selectOneMenu id="rola" value="#{userNewBB.rola}"  itemValue="#{null}" >
+										 <f:selectItem itemLabel="-#{txtUsers.choose}-" noSelectionOption="true" />
+										 <f:selectItem itemLabel="#{txtUsers.shoemaker}" itemValue="1"/>
+                                         <f:selectItem itemLabel="#{txtUsers.client}" itemValue="2"/>							
 									</p:selectOneMenu>
 
 			</h:panelGrid>
 
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{userNewBB.saveUser()}"
+			<p:commandButton value="#{txtUsers.save}" action="#{userNewBB.saveUser()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Powrót" outcome="userList" />
+			<p:button value="#{txtUsers.back}" outcome="userList" />
 		</h:form>
 
 	</p:fieldset>
 
 </h:body>
-
+</f:view>
 </html>

@@ -27,7 +27,7 @@ public class UserNewBB implements Serializable {
 
 	private Uzytkownik uzytkownik = new Uzytkownik();
 	private Uzytkownik loaded = null;
-	private Rola rola = new Rola();
+	private String rola;
 	@EJB
 	UserDAO userDAO;
 
@@ -78,13 +78,13 @@ public class UserNewBB implements Serializable {
 		return PAGE_USER_LIST;
 	}
 
-	public Rola getRola() {
-		return rola;
-	}
+	  public String getRola() {
+	        return rola;
+	    }
 
-	public void setRola(Rola rola) {
-		this.rola = rola;
-	}
+	    public void setRola(String rola) {
+	        this.rola = rola;
+	    }
 
 
 
