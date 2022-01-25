@@ -14,32 +14,33 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
  
-		<p:dataTable value="#{repairListBB.list}" var="n">
+		<p:dataTable value="#{repairListBB.list}" var="n" paginator="true" rows="2"
+                     paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
 			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="Status" />
+					<h:outputText value="#{txtState.status1}" />
 				</f:facet>
 				<h:outputText value="#{n.status}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Data odbioru" />
+					<h:outputText value="#{txtState.date}" />
 				</f:facet>
 				<h:outputText value="#{n.data}" />
 			</p:column>
 			
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Cena" />
+					<h:outputText value="#{txtState.price}"  />
 				</f:facet>
 				<h:outputText value="#{n.cena}" />
 			</p:column>
 				
 			
 			    <f:facet name="header">
-                    <span  style="font-weight: bold; font-size: 20px">Status naprawy</span>                   
+                    <span  style="font-weight: bold; font-size: 20px">#{txtState.status}</span>                   
             </f:facet>
 
 		</p:dataTable>
@@ -50,7 +51,7 @@
 
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-				<p:button value="Powrót do strony głównej" outcome="main.xhtml" style= "margin:0"/>
+				<p:button value="#{txtState.back}"  outcome="main.xhtml" style= "margin:0"/>
 			</h:panelGrid>
 			 
 		</h:form>

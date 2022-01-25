@@ -24,6 +24,14 @@
    <base-name>resources.textRepairs</base-name>
    <var>txtRepairs</var>
   </resource-bundle>
+  <resource-bundle>
+   <base-name>resources.textLog</base-name>
+   <var>txtLog</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>resources.textState</base-name>
+   <var>txtState</var>
+  </resource-bundle>
   <locale-config>
    <default-locale>en</default-locale>
   </locale-config>

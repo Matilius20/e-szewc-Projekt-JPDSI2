@@ -2,7 +2,9 @@ package naprawa;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -14,6 +16,9 @@ import javax.servlet.http.HttpSession;
 
 import sze_DAO.RepairDAO;
 import szewc_entities.Naprawa;
+import szewc_entities.RodzajNaprawy;
+import szewc_entities.RodzajPlatnosci;
+import szewc_entities.Uzytkownik;
 
 
 @Named
@@ -47,16 +52,12 @@ public class RepairNewBB implements Serializable {
 		if (loaded != null) {
 			naprawa = loaded;
 
-		} else {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³êdne u¿ycie systemu", null));
-		}
+		} 
 
 	}
 
 	public String saveRepair() {
-		if (loaded == null) {
-			return PAGE_STAY_AT_THE_SAME;
-		}
+		
 		
 		try {
 			if (naprawa.getIdNaprawa() == 0) {
@@ -69,10 +70,18 @@ public class RepairNewBB implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wyst¹pi³ b³¹d podczas zapisu", null));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "WystÄ…piÅ‚ bÅ‚Ä…d podczas zapisu", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
 		return PAGE_MAIN_BACK;
 	}
+	
+	@PostConstruct
+	public void init() {
+		naprawa.setRodzajNaprawy(new RodzajNaprawy());
+		naprawa.setRodzajPlatnosci(new RodzajPlatnosci());
+		naprawa.setData(new Date());
+	}
+	
 	}

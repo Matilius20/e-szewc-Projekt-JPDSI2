@@ -14,7 +14,9 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
  
-		<p:dataTable value="#{userListBB.list}" var="u">
+		<p:dataTable value="#{userListBB.list}" var="u"  paginator="true" rows="2"
+                     paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+          >
 
 			<p:column priority="5">
 				<f:facet name="header">

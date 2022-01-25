@@ -99,10 +99,10 @@ public List<String> getUserRolesFromDatabase(Uzytkownik user) {
 		
 		ArrayList<String> roles = new ArrayList<String>();
 		
-		if (user.getRola().equals("Szewc")) {
+		if (user.getRola().equals("1")) {
 			roles.add("Szewc");
 		}
-		if (user.getRola().equals("Klient")) {
+		if (user.getRola().equals("2")) {
 			roles.add("Klient");
 		}		
 		return roles;

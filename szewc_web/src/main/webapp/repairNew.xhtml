@@ -28,23 +28,20 @@
 				<p:message for="n-status" display="icon"/>
 
 				<p:outputLabel for="n-rodzajNaprawy" value="Rodzaj naprawy: "/>
-                <p:selectOneMenu id="n-rodzajNaprawy" value="#{repairNewBB.naprawa.rodzajNaprawy}" style="width:150px">
+                <p:selectOneMenu id="n-rodzajNaprawy" value="#{repairNewBB.naprawa.rodzajNaprawy.idNaprawa}" style="width:150px">
                     <f:selectItem itemLabel="Wybierz rodzja naprawy" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{repairNewBB.naprawa.rodzajNaprawy}"/>
+                    <f:selectItem itemLabel="Diagnostyka" itemValue="1"/>
                 </p:selectOneMenu>
                 <p:message for="n-rodzajNaprawy" display="icon"/>
 				
 				<p:outputLabel for="n-rodzajPlatnosci" value="Rodzaj płatności: "/>
-                <p:selectOneMenu id="n-rodzajPlatnosci" value="#{n.naprawa.id_rodzaj_platnosci}" style="width:150px">
+                <p:selectOneMenu id="n-rodzajPlatnosci" value="#{repairNewBB.naprawa.rodzajPlatnosci.idRodzajPlatnosci}" style="width:150px">
                     <f:selectItem itemLabel="Wybierz płatność" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{n.naprawa.id_rodzaj_platnosci}"/>
+                    <f:selectItem itemLabel="Gotówka" itemValue="1"/>
                 </p:selectOneMenu>
 				 <p:message for="n-rodzajPlatnosci" display="icon"/>
 				
-			<h:outputLabel for="n-data" value="Data:" />
-				<p:datePicker  id="n-data" required="true" requiredMessage="Podaj datę odbioru">	 
-				</p:datePicker>
-				<p:message for="n-data" display="icon"/>
+		
 
 			</h:panelGrid>
 

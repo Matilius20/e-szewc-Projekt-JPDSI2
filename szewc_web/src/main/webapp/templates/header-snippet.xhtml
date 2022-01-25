@@ -10,11 +10,7 @@
 		<h1>
 			<ui:insert name="title">...</ui:insert>
 		</h1>
-		 <h:outputText
-		value=" #{remoteClient.details.imie} #{remoteClient.details.nazwisko} jako: #{remoteClient.details.rola.nazwaRoli}" />
-	<h:form style="display:inline;">
-		<h:commandButton value="Wyloguj" action="#{loginBB.doLogout()}" />
-	</h:form>
+		<h:outputText value=" #{remoteClient.details.imie} #{remoteClient.details.nazwisko}" />
 	 </p:fieldset>
 	 
 

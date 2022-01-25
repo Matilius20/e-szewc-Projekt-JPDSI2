@@ -13,7 +13,6 @@ import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
 import sze_DAO.UserDAO;
-import szewc_entities.Rola;
 import szewc_entities.Uzytkownik;
 
 
@@ -27,7 +26,6 @@ public class UserNewBB implements Serializable {
 
 	private Uzytkownik uzytkownik = new Uzytkownik();
 	private Uzytkownik loaded = null;
-	private String rola;
 	@EJB
 	UserDAO userDAO;
 
@@ -50,7 +48,7 @@ public class UserNewBB implements Serializable {
 			uzytkownik = loaded;
 
 		} else {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³êdne u¿ycie systemu", null));
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "BÅ‚Ä™dne uÅ¼ycie systemu", null));
 		}
 
 	}
@@ -71,20 +69,13 @@ public class UserNewBB implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wyst¹pi³ b³¹d podczas zapisu", null));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "WystÄ…piÅ‚ bÅ‚Ä…d podczas zapisu", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
 		return PAGE_USER_LIST;
 	}
 
-	  public String getRola() {
-	        return rola;
-	    }
-
-	    public void setRola(String rola) {
-	        this.rola = rola;
-	    }
 
 
 

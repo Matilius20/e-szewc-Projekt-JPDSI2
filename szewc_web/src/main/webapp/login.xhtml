@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/templates/page-template.xhtml">
 
-<ui:define name="pageContent">
-
+<f:view locale="#{facesContext.externalContext.requestLocale}">
+ <h:head>
+	<meta charset="utf-8"/>
+	<title>Logowanie</title>
+</h:head>
+ 
+<h:body style="background-color: #eee; margin: 0.5em;">
+ <p:fieldset legend="#{txtLog.site}"  toggleable="true" toggleSpeed="500">
 		<h:form>
-			<h:panelGrid columns="2" cellpadding="5" styleClass="bottom-space">
-				<h:outputLabel for="login" value="login:" />
-				<h:inputText id="login" value="#{loginBB.login}"
-					required="true"	requiredMessage="podaj login"/>
-				<h:outputLabel for="haslo" value="hasło:" />
-				<h:inputSecret id="haslo" value="#{loginBB.haslo}"
-				required="true"	requiredMessage="podaj hasło"/>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="login" value="#{txtLog.login}:" />
+				<p:inputText id="login" value="#{loginBB.login}"
+					required="true"	requiredMessage="#{txtLog.errL}" />
+
+				<h:outputLabel for="haslo" value="#{txtLog.pass}:" />
+				<p:password id="haslo" value="#{loginBB.haslo}"
+				required="true" toggleMask="true"	requiredMessage="#{txtLog.errP}"/>
 			</h:panelGrid>
+			
+		<p:messages id="msgs" />
 		
-			<h:messages />
 		
-			<h:commandButton value="Zaloguj" action="#{loginBB.doLogin()}" update="msg" />
+			<p:commandButton value="#{txtLog.log}" action="#{loginBB.doLogin()}"
+				style="margin-right: 1em;" update="@form" />
 
 		</h:form>
 
-	</ui:define>
+</p:fieldset>
+</h:body>
+</f:view>
 
-</ui:composition>
 </html>

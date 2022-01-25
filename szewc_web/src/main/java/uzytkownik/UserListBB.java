@@ -35,7 +35,7 @@ public class UserListBB {
 	
 	@EJB
 	UserDAO userDAO;
-		
+			
 	public String getNazwisko() {
 		return nazwisko;
 	}
