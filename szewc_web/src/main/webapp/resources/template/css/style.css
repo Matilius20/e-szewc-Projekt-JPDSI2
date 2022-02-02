@@ -1,8 +1,10 @@
 body{
 	font-family: 'Century Gothic',helvetica,verdana,arial;
-	background: url("../img/s.jpg.jsf?ln=template") no-repeat center center fixed;
-	background-size: cover;
-	margin:0;
+	background-image: url("#{resource['image:s.jpg']}");
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .bottom-space{
@@ -17,3 +19,10 @@ body{
 	margin: 1em;
 	min-width: 700px;
 }
+
+
+    #button.ui-button {
+        margin-right: .5rem;
+    }
+
+

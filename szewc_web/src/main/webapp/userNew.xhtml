@@ -13,6 +13,8 @@
 <h:head>
 	<meta charset="utf-8"/>
 	<title>Nowy użytkownik</title>
+	<link type="image/x-icon" rel="shortcut icon"
+	href="#{resource['template:img/but.png']}" />
 </h:head>
 
 <h:body style="background-color: #eee; margin: 0.5em;">
@@ -24,7 +26,7 @@
 
 				<h:outputLabel for="u-imie" value="#{txtUsers.name}:" />
 				<p:inputText id="u-imie" value="#{userNewBB.uzytkownik.imie}"
-					required="true" requiredMessage="#{Err.givename}"
+					required="true" requiredMessage="Podaj imie"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
@@ -32,7 +34,7 @@
 
 				<h:outputLabel for="u-nazwisko" value="#{txtUsers.surname}:"/>
 				<p:inputText id="u-nazwisko" value="#{userNewBB.uzytkownik.nazwisko}"
-					required="true" requiredMessage="podaj nazwisko"
+					required="true" requiredMessage="Podaj nazwisko"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
@@ -60,13 +62,15 @@
 				</p:inputText>
 				<p:message for="u-numerTelefonu" display="icon"/>
 				
+			
+				
 
 			</h:panelGrid>
 
 			<p:messages id="msgs" />
 
-			<p:commandButton value="#{txtUsers.save}" action="#{userNewBB.saveUser()}"
-				style="margin-right: 1em;" update="@form" />
+			<p:commandButton  value="#{txtUsers.save}" action="#{userNewBB.saveUser()}" style="margin-right: 1em;" update="@form" />
+
 
 			<p:button value="#{txtUsers.back}" outcome="userList" />
 		</h:form>

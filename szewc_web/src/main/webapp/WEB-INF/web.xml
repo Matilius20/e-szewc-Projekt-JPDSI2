@@ -3,17 +3,14 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-	<context-param>
-		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Development</param-value>
-	</context-param>
-	<context-param>
-		<param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
-		<param-value>true</param-value>
-	</context-param>
+	
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>nova-dark</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
 	</context-param>
 		<filter>
 		<filter-name>SecurityFilter</filter-name>
@@ -26,14 +23,15 @@
 			<param-name>permissions</param-name>
 			<param-value>
 /javax.faces.resource : PUBLIC;
-/main.xhtml : PUBLIC;
-/repairEdit.xhtml : PUBLIC;
-/repairList.xhtml : PUBLIC;
-/repairNew.xhtml  : PUBLIC;
-/repairStatus.xhtml  : PUBLIC;
-/userEdit.xhtml : PUBLIC;
-/userList.xhtml : PUBLIC;
-/userNew.xhtml : PUBLIC;
+/main.xhtml : Szewc, Klient;
+/repairEdit.xhtml : Szewc;
+/repairList.xhtml : Szewc;
+/repairNew.xhtml  : Szewc, Klient;
+/repairStatus.xhtml  : Szewc, Klient;
+/userEdit.xhtml : Szewc;
+/userList.xhtml : Szewc;
+/userNew.xhtml : Szewc;
+ 
 			</param-value>
 		</init-param>
 		<init-param>
@@ -61,15 +59,19 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-	<welcome-file-list>
-		<welcome-file>login.xhtml</welcome-file>
-	</welcome-file-list>
-	<error-page>
-		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
-		<location>/uzytkownikList.xhtml</location>
-	</error-page>
+	<session-config>
+		<session-timeout>1</session-timeout>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
 	<mime-mapping>
 		<extension>ico</extension>
 		<mime-type>image/x-icon</mime-type>
 	</mime-mapping>
+	<welcome-file-list>
+		<welcome-file>/main.xhtml</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/viewExpired.xhtml</location>
+	</error-page>
 </web-app>

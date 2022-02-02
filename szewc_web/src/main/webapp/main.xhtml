@@ -6,25 +6,24 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	
+	
+	
 <ui:composition template="/templates/page-template.xhtml">
 
 <ui:define name="pageContent">
 
- 
-<div class="card">
-    <p:tabMenu activeIndex="#{param.i}">
-        <p:menuitem  value="#{txtMain.users}" outcome="userList.xhtml" icon="pi pi-fw pi-home" style="margin-right:277px; margin-top:20px">
-        </p:menuitem>
-        <p:menuitem value="#{txtMain.list}" outcome="repairList.xhtml" icon="pi pi-fw pi-calendar" style="margin-right:277px; margin-top:20px">
-        </p:menuitem>
-        <p:menuitem value="#{txtMain.new}" outcome="repairNew.xhtml" icon="pi pi-fw pi-pencil" style="margin-right:277px; margin-top:20px">
-        </p:menuitem>
-        <p:menuitem value="#{txtMain.state}" outcome="repairStatus.xhtml" icon="pi pi-fw pi-file" style="margin-right:277px; margin-top:20px">
-        </p:menuitem>
-        <p:menuitem value="#{txtLog.logout}" outcome="#{loginBB.doLogout()}" style="margin-right:277px; margin-top:20px">
-        </p:menuitem>
-    </p:tabMenu>
-</div>
+
+
+<h:form>
+<h:panelGrid columns="1" cellpadding="30">
+          <p:commandButton  value="#{txtMain.users}" action= "userList?faces-redirect=true"  icon="pi pi-fw pi-home"  />  
+         <p:commandButton  value="#{txtMain.list}"  action= "repairList?faces-redirect=true" icon="pi pi-fw pi-calendar"    />
+         <p:commandButton  value="#{txtMain.new}"   action= "repairNew?faces-redirect=true"  icon="pi pi-fw pi-pencil"   />
+         <p:commandButton  value="#{txtMain.state}"  action= "repairStatus?faces-redirect=true" icon="pi pi-fw pi-file"   />
+         <p:commandButton  value="#{txtLog.logout}" action="#{loginBB.doLogout()}" icon="pi pi-times"  />
+</h:panelGrid>
+</h:form>
+
 
 
 </ui:define>

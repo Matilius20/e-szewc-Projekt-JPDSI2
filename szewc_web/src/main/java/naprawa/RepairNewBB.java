@@ -31,6 +31,7 @@ public class RepairNewBB implements Serializable {
 
 	private Naprawa naprawa = new Naprawa();
 	private Naprawa loaded = null;
+	private Uzytkownik uzytkownik= new Uzytkownik();
 
 	@EJB
 	RepairDAO repairDAO;
@@ -82,6 +83,7 @@ public class RepairNewBB implements Serializable {
 		naprawa.setRodzajNaprawy(new RodzajNaprawy());
 		naprawa.setRodzajPlatnosci(new RodzajPlatnosci());
 		naprawa.setData(new Date());
+		naprawa.setUzytkownik(new Uzytkownik());
 	}
 	
 	}

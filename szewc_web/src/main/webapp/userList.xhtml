@@ -52,8 +52,10 @@
 				<p:commandButton value="#{txtUsers.edit}" icon="pi pi-pencil"
 					action="#{userListBB.editUzytkownik(u)}" />
 
-				<p:commandButton value="#{txtUsers.delete}"  icon="pi pi-trash"
-					action="#{userListBB.removeUzytkownik(u)}" update="@form" />
+				<p:commandButton value="#{txtUsers.delete}"  
+					action="#{userListBB.removeUzytkownik(u)}" update="@form" styleClass="ui-button-danger" icon="pi pi-times">
+                   <p:confirm header="Potwierdzenie usuwania" message="Czy na pewno chcesz usunąć tego użytkownika" icon="pi pi-info-circle"/> 
+                   </p:commandButton>
 					<f:param name="u" value="#{u.idUzytkownik}" />
 			</p:column>
 
@@ -71,7 +73,12 @@
 			action="#{userListBB.newUzytkownik()}" />	
 			<p:button value="#{txtUsers.back}" outcome="main.xhtml"/>
 			</h:panelGrid>
-			 
+			
+			 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="Nie" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Tak" type="button" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog> 
+        
 		</h:form>
 	</p:fieldset>
 	

@@ -2,7 +2,9 @@ package uzytkownik;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -13,6 +15,9 @@ import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
 import sze_DAO.UserDAO;
+import szewc_entities.RodzajNaprawy;
+import szewc_entities.RodzajPlatnosci;
+import szewc_entities.Rola;
 import szewc_entities.Uzytkownik;
 
 
@@ -72,8 +77,15 @@ public class UserNewBB implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wystąpił błąd podczas zapisu", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
+		
+		
 
 		return PAGE_USER_LIST;
+	}
+	
+	@PostConstruct
+	public void init() {
+		uzytkownik.setRola(new Rola());
 	}
 
 
