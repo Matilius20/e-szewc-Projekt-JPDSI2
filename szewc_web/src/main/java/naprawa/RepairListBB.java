@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import sze_DAO.RepairDAO;
 import szewc_entities.Naprawa;
+import szewc_entities.Uzytkownik;
 
 @Named
 @RequestScoped
@@ -31,8 +32,33 @@ public class RepairListBB {
 	@EJB
 	RepairDAO repairDAO;
 	
+	private String nazwisko;
+	
+	public String getNazwisko() {
+		return nazwisko;
+	}
+
+	public void setNazwisko(String nazwisko) {
+		this.nazwisko = nazwisko;
+	}
+	
 	public List<Naprawa> getList(){
 		return repairDAO.getFullList();
+	}
+	
+	public List<Naprawa> getFullList(){
+		List<Naprawa> list = null;
+		
+
+		Map<String,Object> searchParams = new HashMap<String, Object>();
+		
+		if (nazwisko != null && nazwisko.length() > 0){
+			searchParams.put("nazwisko", nazwisko);
+		}
+		
+		list = repairDAO.getList(searchParams);
+		
+		return list;
 	}
 	
 

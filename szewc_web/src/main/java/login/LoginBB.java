@@ -23,7 +23,7 @@ import szewc_entities.Uzytkownik;
 @RequestScoped
 public class LoginBB {
 	private static final String PAGE_MAIN = "main?faces-redirect=true";
-	private static final String PAGE_LOGIN = "/login";
+	private static final String PAGE_LOGIN = "login?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
  
 	private String login;

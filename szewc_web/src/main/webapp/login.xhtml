@@ -16,7 +16,8 @@
 </h:head>
  
 <h:body style="margin: 0.5em;">
- <p:fieldset legend="#{txtLog.site}"  toggleable="true" toggleSpeed="500">
+<center>
+ <p:fieldset legend="#{txtLog.site}"  toggleable="true" toggleSpeed="500" style= "width: 300px" >
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel for="login" value="#{txtLog.login}:" />
@@ -27,17 +28,17 @@
 				<p:password id="haslo" value="#{loginBB.haslo}"
 				required="true" toggleMask="true"	requiredMessage="#{txtLog.errP}"/>
 			</h:panelGrid>
-			
+		
 		<p:messages id="msgs" />
 		
-		
+			
 			<p:commandButton value="#{txtLog.log}" action="#{loginBB.doLogin()}"
-				style="margin-right: 1em;" update="@form" />
+				style="margin-right: -2em;" update="@form"  />
 
 		</h:form>
 
 </p:fieldset>
-
+</center>
 </h:body>
 </f:view>
 

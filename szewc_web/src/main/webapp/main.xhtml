@@ -15,14 +15,15 @@
 
 
 <h:form>
-<h:panelGrid columns="1" cellpadding="30">
-          <p:commandButton  value="#{txtMain.users}" action= "userList?faces-redirect=true"  icon="pi pi-fw pi-home"  />  
-         <p:commandButton  value="#{txtMain.list}"  action= "repairList?faces-redirect=true" icon="pi pi-fw pi-calendar"    />
-         <p:commandButton  value="#{txtMain.new}"   action= "repairNew?faces-redirect=true"  icon="pi pi-fw pi-pencil"   />
-         <p:commandButton  value="#{txtMain.state}"  action= "repairStatus?faces-redirect=true" icon="pi pi-fw pi-file"   />
-         <p:commandButton  value="#{txtLog.logout}" action="#{loginBB.doLogout()}" icon="pi pi-times"  />
-</h:panelGrid>
+
+         <p:commandButton  value="#{txtMain.users}" action= "userList?faces-redirect=true"  icon="pi pi-fw pi-home" style= "width: 405px; height: 100px"  />  
+         <p:commandButton  value="#{txtMain.list}"  action= "repairList?faces-redirect=true" icon="pi pi-fw pi-calendar" style= "width: 405px; height: 100px"   />
+         <p:commandButton  value="#{txtMain.new}"   action= "repairNew?faces-redirect=true"  icon="pi pi-fw pi-pencil" style= "width: 405px; height: 100px"  />
+         <p:commandButton  value="#{txtMain.state}"  action= "repairStatus?faces-redirect=true" icon="pi pi-fw pi-file" style= "width: 405px; height: 100px"  />
+         <p:commandButton  value="#{txtLog.logout}" action="#{loginBB.doLogout()}" icon="pi pi-times" style= "width: 420px; height: 100px" />
+
 </h:form>
+
 
 
 

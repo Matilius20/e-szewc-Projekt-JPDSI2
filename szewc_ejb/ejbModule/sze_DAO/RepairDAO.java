@@ -47,9 +47,8 @@ public class RepairDAO {
 
 		return list;
 	}
-	
-	public List<Uzytkownik> getFullList(Map<String, Object> searchParams) {
-		List<Uzytkownik> list = null;
+	public List<Naprawa> getList(Map<String, Object> searchParams) {
+		List<Naprawa> list = null;
 
 
 		String select = "select u ";

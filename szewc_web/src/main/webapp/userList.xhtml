@@ -15,8 +15,9 @@
 	<h:form id="form-table" style="margin-bottom:1em;">
  
 		<p:dataTable value="#{userListBB.list}" var="u"  paginator="true" rows="2"
-                     paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-          >
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords}"
+                     rowsPerPageTemplate="2,4,6" >
 
 			<p:column priority="5">
 				<f:facet name="header">

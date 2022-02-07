@@ -14,8 +14,10 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
  
-		<p:dataTable value="#{repairListBB.list}" var="n" paginator="true" rows="2"
-                     paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+		<p:dataTable value="#{repairListBB.list}" var="n"   paginator="true" rows="2"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords}"
+                     rowsPerPageTemplate="2,4,6" >
 
 			<p:column priority="5">
 				<f:facet name="header">
@@ -67,7 +69,9 @@
 					action="#{repairListBB.editRepair(n)}" />
 
 				<p:commandButton value="#{txtRepairs.delete}"  icon="pi pi-trash"
-					action="#{repairListBB.deleteRepair(n)}" update="@form" />
+					action="#{repairListBB.deleteRepair(n)}" update="@form" >
+					 <p:confirm header="Potwierdzenie usuwania" message="Czy na pewno chcesz usunąć tą naprawę" icon="pi pi-info-circle"/>
+					 </p:commandButton>
 					<f:param name="n" value="#{n.idNaprawa}" />
 			</p:column>
 
@@ -79,8 +83,15 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:button value="#{txtRepairs.back}" outcome="main.xhtml" style= "margin:0"/>
 			</h:panelGrid>
+			
+				 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="Nie" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Tak" type="button" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog> 
 			 
 		</h:form>
+		
+		
 </ui:define>
 </ui:composition>
 
